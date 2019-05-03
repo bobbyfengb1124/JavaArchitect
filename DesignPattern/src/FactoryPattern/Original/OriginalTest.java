@@ -1,4 +1,4 @@
-package Original;
+package FactoryPattern.Original;
 
 public class OriginalTest {
     public static void main(String[] args) {

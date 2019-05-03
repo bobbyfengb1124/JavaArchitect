@@ -1,4 +1,4 @@
-package SimpleFactory;
+package FactoryPattern;
 
 public class JavaCourse implements Course {
     @Override

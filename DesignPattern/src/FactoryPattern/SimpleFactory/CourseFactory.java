@@ -1,4 +1,6 @@
-package SimpleFactory;
+package FactoryPattern.SimpleFactory;
+
+import FactoryPattern.Course;
 
 public class CourseFactory {
     public Course create(Class<? extends Course> clazz) {
