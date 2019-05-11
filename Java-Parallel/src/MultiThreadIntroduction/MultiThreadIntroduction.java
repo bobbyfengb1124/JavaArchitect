@@ -38,6 +38,10 @@ public class MultiThreadIntroduction {
                 processDataAndTakeAction(scannerData);
             }
         });
+
+        scannerThread1.start();
+        scannerThread2.start();
+        scannerThread3.start();
     }
 
     private static void processDataAndTakeAction(ScannerData scannerData) {
