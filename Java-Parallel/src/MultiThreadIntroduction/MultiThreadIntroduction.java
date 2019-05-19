@@ -13,6 +13,7 @@ public class MultiThreadIntroduction {
                 processDataAndTakeAction(scannerData);
             }
 
+
         });
 
         Thread scannerThread2 = new Thread(() -> {
