@@ -1,7 +1,7 @@
-package FactoryPattern.SimpleFactory;
+package factorypattern.SimpleFactory;
 
-import FactoryPattern.Course;
-import FactoryPattern.JavaCourse;
+import factorypattern.Course;
+import factorypattern.JavaCourse;
 
 public class SimpleFactoryTest {
     public static void main(String[] args) {

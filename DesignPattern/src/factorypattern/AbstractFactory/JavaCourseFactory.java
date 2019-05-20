@@ -1,6 +1,7 @@
-package FactoryPattern.AbstractFactory;
+package factorypattern.AbstractFactory;
 
-import FactoryPattern.Course;
+import factorypattern.Course;
+import factorypattern.JavaCourse;
 
 public class JavaCourseFactory implements CourseFactory {
     @Override

@@ -1,4 +1,4 @@
-package FactoryPattern.AbstractFactory;
+package factorypattern.AbstractFactory;
 
 public class AbstractFactoryTest {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package FactoryPattern.FactoryMethod;
+package factorypattern.FactoryMethod;
 
-import FactoryPattern.Course;
-import FactoryPattern.PythonCourse;
+import factorypattern.Course;
+import factorypattern.PythonCourse;
 
 public class PythonCourseFactory implements CourseFactory {
     @Override

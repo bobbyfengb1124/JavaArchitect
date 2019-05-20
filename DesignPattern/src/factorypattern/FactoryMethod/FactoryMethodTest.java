@@ -1,7 +1,7 @@
-package FactoryPattern.FactoryMethod;
+package factorypattern.FactoryMethod;
 
 
-import FactoryPattern.Course;
+import factorypattern.Course;
 
 public class FactoryMethodTest {
     public static void main(String[] args) {
