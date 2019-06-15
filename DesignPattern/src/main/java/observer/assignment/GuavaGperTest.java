@@ -6,7 +6,7 @@ import observer.gperdemo.Question;
 public class GuavaGperTest {
     public static void main(String[] args) {
         Question question = new Question();
-        question.setUsername("asda");
+        question.setUsername("Mic");
         question.setContent("Why do we use Spring framework?");
 
         GuavaTeacher tom = new GuavaTeacher("Tom");
