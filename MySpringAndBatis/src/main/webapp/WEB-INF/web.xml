@@ -6,7 +6,7 @@
     <display-name>My Web Application</display-name>
     <servlet>
         <servlet-name>mymvc</servlet-name>
-        <servlet-class>my.springframework.servlet.v2.MyDispatcherServlet</servlet-class>
+        <servlet-class>my.springframework.servlet.v3.MyDispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>application.properties</param-value>
