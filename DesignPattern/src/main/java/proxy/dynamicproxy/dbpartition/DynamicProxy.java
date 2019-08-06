@@ -21,7 +21,6 @@ public class DynamicProxy implements InvocationHandler {
         return Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), this);
     }
 
-    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         before(args[0]);
         Object object = method.invoke(target, args);

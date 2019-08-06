@@ -13,7 +13,6 @@ public class FBMeipo implements FBInvocationHandler {
         return FBProxy.newProxyInstance(new FBClassLoader(), clazz.getInterfaces(), this);
     }
 
-    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         before();
         method.invoke(this.target, args);

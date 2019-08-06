@@ -15,7 +15,6 @@ public class JDKMeipo implements InvocationHandler {
         return Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), this);
     }
 
-    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         before();
         method.invoke(this.target, args);
