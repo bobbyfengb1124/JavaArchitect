@@ -15,6 +15,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>mymvc</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/demo/*</url-pattern>
     </servlet-mapping>
 </web-app>
