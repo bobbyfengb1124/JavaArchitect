@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class BlockedQueue {
+public class BlockedQueue1 {
     ReentrantLock lock;
     Condition readCondition;
     Condition writeCondition;
@@ -10,7 +10,7 @@ public class BlockedQueue {
 
     LinkedList<Integer> queue;
 
-    public BlockedQueue(int limit) {
+    public BlockedQueue1(int limit) {
         lock = new ReentrantLock();
         queue = new LinkedList();
         readCondition = lock.newCondition();
@@ -19,7 +19,7 @@ public class BlockedQueue {
     }
 
     public static void main(String[] args) {
-        BlockedQueue blockedQueue = new BlockedQueue(1);
+        BlockedQueue1 blockedQueue = new BlockedQueue1(1);
         new Thread() {
             public void run() {
                 System.out.println("Taking Thread 1 Running");
