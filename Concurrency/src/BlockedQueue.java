@@ -4,24 +4,27 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class BlockedQueue {
     ReentrantLock lock;
-    Condition condition;
+    Condition readCondition;
+    Condition writeCondition;
+    Integer limit;
 
     LinkedList<Integer> queue;
 
-    public BlockedQueue() {
+    public BlockedQueue(int limit) {
         lock = new ReentrantLock();
         queue = new LinkedList();
-        condition = lock.newCondition();
+        readCondition = lock.newCondition();
+        writeCondition = lock.newCondition();
+        this.limit = limit;
     }
 
     public static void main(String[] args) {
-        BlockedQueue blockedQueue = new BlockedQueue();
+        BlockedQueue blockedQueue = new BlockedQueue(1);
         new Thread() {
             public void run() {
-                System.out.println("Taking Thread Running");
+                System.out.println("Taking Thread 1 Running");
                 Integer ret = blockedQueue.take();
-                System.out.println("Taking Thread Finish");
-                System.out.println("The element is: " + ret);
+                System.out.println("Taking Thread 1 Finish: " + ret);
             }
         }.start();
 
@@ -33,9 +36,39 @@ public class BlockedQueue {
 
         new Thread() {
             public void run() {
-                System.out.println("Putting Thread Running");
+                System.out.println("Putting Thread 1 Running");
                 blockedQueue.put(3);
-                System.out.println("Putting Thread Finish");
+                System.out.println("Putting Thread 1 Finish");
+            }
+        }.start();
+
+        new Thread() {
+            public void run() {
+                System.out.println("Putting Thread 2 Running");
+                blockedQueue.put(4);
+                System.out.println("Putting Thread 2 Finish");
+            }
+        }.start();
+
+        new Thread() {
+            public void run() {
+                System.out.println("Putting Thread 3 Running");
+                blockedQueue.put(5);
+                System.out.println("Putting Thread 3 Finish");
+            }
+        }.start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        new Thread() {
+            public void run() {
+                System.out.println("Taking Thread 2 Running");
+                Integer ret = blockedQueue.take();
+                System.out.println("Taking Thread 2 Finish: " + ret);
             }
         }.start();
 
@@ -43,8 +76,17 @@ public class BlockedQueue {
 
     public void put(Integer num) {
         lock.lock();
-        queue.addLast(num);
-        condition.signal();
+        if (queue.size() >= limit) {
+            try {
+                writeCondition.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        queue.push(num);
+
+        readCondition.signal();
         lock.unlock();
     }
 
@@ -53,12 +95,13 @@ public class BlockedQueue {
         lock.lock();
         if (queue.size() == 0) {
             try {
-                condition.await();
+                readCondition.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        ret = queue.peekFirst();
+        ret = queue.pollFirst();
+        writeCondition.signal();
         lock.unlock();
         return ret;
     }
