@@ -1,0 +1,12 @@
+my/springframework/servlet/v2/MyDispatcherServlet.class
+my/springframework/annotations/MyRequestMapping.class
+my/springframework/annotations/MyService.class
+my/springframework/service/IDemoService.class
+my/springframework/servlet/v3/MyDispatcherServlet$Handler.class
+my/springframework/annotations/MyController.class
+my/springframework/annotations/MyRequestParam.class
+my/springframework/service/impl/DemoService.class
+my/springframework/servlet/v3/MyDispatcherServlet.class
+my/springframework/annotations/MyAutowired.class
+my/springframework/action/DemoAction.class
+my/springframework/servlet/v1/MyDispatcherServlet.class
